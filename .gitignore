@@ -9,3 +9,4 @@
 *.exe
 *.gz
 VirtualBoxVMs/
+bin/

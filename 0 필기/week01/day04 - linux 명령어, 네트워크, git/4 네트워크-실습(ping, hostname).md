@@ -120,15 +120,17 @@ ping 막아보기!
 
 
 
-`C:\windows\system32\drivers\etc\hosts` 파일 수정
+`C:\windows\system32\drivers\etc\` 파일 수정
 
--> 메모장 관리자 권한으로 실행
+-> 메모장 관리자 권한으로 실행, 위의 주소 입력, 모든파일보기 hosts 선택!
 
 > 192.168.1.50 lx01 
 >
 > 192.168.1.50 www.leeap.com 
 >
 > ![1556174983706](assets/1556174983706.png)
+
+**왼쪽 ip를 오른쪽이름으로 alias하는 느낌?..**
 
 **이제 로그인 할 때** 
 

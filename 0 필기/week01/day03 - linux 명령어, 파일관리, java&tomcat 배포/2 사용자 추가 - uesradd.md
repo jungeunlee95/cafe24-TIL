@@ -52,7 +52,7 @@ ex) **useradd test1-d /var/data/test1**
 
 wheel 라는 -g(그룹)에 지정  // -d : dir {디렉토리 지정 }  // 사용자 id
 
-`useradd -g wheel -d /home/webmaster web`
+`useradd -g wheel -d /home/webmaster webmaster`
 
 --> web이라는 사용자를 만듬
 

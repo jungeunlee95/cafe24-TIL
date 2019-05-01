@@ -1,0 +1,89 @@
+L(inux, CentOS 7)
+A(apache, 2.0.64) 
+M(ySQL, 5.6.15)
+P(HP, 5.2.17)
+
+
+Library 설치내역
+=====================================
+(1) zlib 1.2.8 ( http://www.zlib.net )
+
+./cofigure --prefix=/usr/local
+make
+make install
+
+
+(2) libpng 1.6.34 ( http://www.libpng.org/pub/png/libpng.html )
+
+cp scripts/makefile.linux makefile
+make test
+make install
+
+
+(3) freetype 2.4.0 ( http://www.freetype.org )
+
+./cofigure --prefix=/usr/local
+make
+make install
+
+
+(4) jpeg v8 ( http://www.ijg.org/files )
+
+./configure --enable-shared --enable-static
+make 
+make install
+
+
+(5) gd 2.2.4 ( https://libgd.github.io/ )
+
+./cofigure --prefix=/usr/local
+make
+make install
+
+
+(6) libiconv 1.15 ( http://www.gnu.org/software/libiconv )
+
+./cofigure --prefix=/usr/local
+make
+make install
+
+
+(7) mcrypt 2.5.6 ( http://mcrypt.hellug.gr/lib/index.html )
+
+./cofigure --prefix=/usr/local
+make
+make check
+make install
+
+
+(8) libxml2 2.9.7 ( http://www.xmlsoft.org ) 
+
+./configure --with-zlib=/usr/local --with-iconv=/usr/local
+make
+make install
+
+
+(9) libxslt 1.1.30 ( http://www.xmlsoft.org )
+
+./configure --with-libxml-prefix=/usr/local --with-libxml-include-prefix=/usr/local/include --with-libxml-libs-prefix=/usr/local/lib
+make install
+
+
+(10) php 설치 ( http://php.net/releases/ )
+./configure --with-apxs2=/usr/local/cafe24/apache/bin/apxs \
+--with-jpeg-dir=/usr/local --with-png-dir=/usr/local \
+--with-zlib-dir=/usr/local --with-freetype-dir=/usr/local \
+--with-ttf=/usr/local --with-iconv=/usrl/local --with-libxml-dir=/usr/local \
+--with-xsl=/usr/local --with-mysql=/usr/local/cafe24/mysql \
+--with-gd --with-config-file-path=/usr/local/lib \
+--disable-debug --enable-ftp --enable-gd-native-ttf \
+--with-mysqli=/usr/local/cafe24/mysql/bin/mysql_config \
+--enable-mbstring --enable-magic-quotes --enable-sockets 
+
+설치 시 node.c의 dereferencing pointer to incomplete type RETVAL_STRINGL 컴파일 문제
+
+
+
+
+
+

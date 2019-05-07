@@ -10,3 +10,4 @@
 *.gz
 VirtualBoxVMs/
 bin/
+libs/

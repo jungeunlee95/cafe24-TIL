@@ -31,9 +31,11 @@ insert into member values(null, '이정은2', '010-1111-2222', 'bbb', 'bbb');
 select name, phone, email, password
 from member;
 
+select * from orders;
+select * from book_order;
 
 -- cart 장바구니에 담기
-select * from cart;
+select count(*) from cart;
 select * from member;
 select * from book;
 insert into cart values(null, 1, 1, 1);
@@ -44,7 +46,7 @@ select count(*)
 from cart
 where member_no = 2
 and book_no = 3;
-
+-- 해당 책의 수량을 플러스
 update cart
 set amount = amount+1
 where member_no = 1
@@ -70,7 +72,9 @@ select last_insert_id();
 -- 주문정보 등록
 insert into orders(no, order_no, address, total_price, member_no) 
 values(null, concat(DATE_FORMAT(now(),'%Y%m%d'), '-', 
-        lpad( ((select count(*) from orders ALIAS_FOR_SUBQUERY )+1), '5', '0' )),
+        lpad( ((select count(*) 
+				from orders ALIAS_FOR_SUBQUERY 
+				where DATE_FORMAT(today, '%y%m%d') = DATE_FORMAT(now(), '%y%m%d') )+1), '5', '0' )),
        '주소',
        (select sum(b.price)
 			from cart c, book b
@@ -80,10 +84,10 @@ values(null, concat(DATE_FORMAT(now(),'%Y%m%d'), '-',
 
 select book_no, amount 
 from cart where member_no = 1;
-select * from book_order;
 
 insert into book_order
 values(null,1,20,1);
+
 select no from orders
 where member_no = 1
 order by no desc
@@ -95,9 +99,6 @@ from cart c, book b
 where c.book_no = b.no 
 and member_no = 1;
 
-select concat(DATE_FORMAT(now(),'%Y%m%d'), '-', 
-        lpad( ((select count(*) from orders)+1), '5', '0' ));
-
 -- 방금 프라이머리 키 가져오기
 select last_insert_id();
 
@@ -108,3 +109,49 @@ group by bo.book_no;
 
 select no, order_no, address, total_price, DATE_FORMAT(today,'%Y-%m-%d'), member_no
 from orders;
+
+select c.no, b.title, m.name, c.amount, m.no, b.no, b.price*c.amount
+from cart c, book b, member m
+where c.book_no = b.no
+and c.member_no = m.no
+and member_no = 1;
+
+select o.no, o.order_no, o.address, total_price, DATE_FORMAT(o.today,'%Y-%m-%d'), m.name
+from orders o, member m
+where o.member_no = m.no;
+
+select * from book;
+update book set stock=stock-1 where no = 1;
+
+select * from book_order;
+select * from orders;
+
+select sum(b.price)
+from cart c, book b
+where c.book_no = b.no
+and member_no = 1;
+
+
+insert into orders(no, order_no, address, total_price, member_no)
+values(null, concat(DATE_FORMAT(now(),'%Y%m%d'), '-',  
+lpad( ((select count(*) from orders ALIAS_FOR_SUBQUERY )+1), '5', '0' )),
+?, (select sum(b.price) from cart c, book b
+where c.book_no = b.no  and member_no = ?), ? );
+
+select sum(amount*price)
+from cart c, book b
+where c.book_no = b.no  and member_no = 2;
+
+
+select  b.no, b.title, sum(bo.amount)
+from book_order bo, book b
+where bo.book_no = b.no
+group by bo.book_no;
+
+select count(*) from orders ALIAS_FOR_SUBQUERY
+where date_format(today, "%y%m%d") = date_format(now(), "%y%m%d");
+
+select count(*) from orders ALIAS_FOR_SUBQUERY where date_format(today, '%y%m%d') = date_format(now(), '%y%m%d');
+
+ 
+ 

@@ -239,7 +239,7 @@ Web Application Context라고 함!
 
 1. 컨테이너 만듦
 2. 스캐닝을 통해 메소드를 추출해 HandlerMapping 만듦
-3. MVC객체 생성
+3. MAV객체 생성
 
 #### HandlerMapping
 

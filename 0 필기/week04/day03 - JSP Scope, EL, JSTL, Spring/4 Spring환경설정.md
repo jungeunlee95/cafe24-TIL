@@ -241,7 +241,7 @@ Web Application Context라고 함!
 2. 스캐닝을 통해 메소드를 추출해 HandlerMapping 만듦
 3. MAV객체 생성
 
-#### HandlerMapping
+#### HandlerMapping - 핸들러 클래스 객체임! 
 
 | url    | controller객체           | Method 이름 | parameter    |
 | ------ | ------------------------ | ----------- | ------------ |

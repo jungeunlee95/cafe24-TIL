@@ -22,7 +22,7 @@
 2. `Statement`를 만들고 실행
 3. 자원정리(사용한 리소스 닫기)
 
-> add()라는 메소드 하나에서 세 가지 관심사항을 발견..! => **초난감상태!!**
+> add()라는 메소드 하나에서 세 가지 관심사항을 발견..! => :boom: **초난감상태!!** :boom:
 >
 > *** 예외처리에 관한 내용은 후에 다룰 것임
 
@@ -82,9 +82,9 @@ public abstract Connection getConnection(); // 추상메소드
 
 
 
-**디자인 패턴 :closed_book:**
+### **디자인 패턴 :closed_book:**
 
-템플릿 메소드 패턴[^template method pattern]
+#### 템플릿 메소드 패턴[^template method pattern]
 
 > 슈퍼클래스에서 기본 로직의 흐름을 만듦
 >
@@ -92,15 +92,69 @@ public abstract Connection getConnection(); // 추상메소드
 >
 > 서브클래스에서 이 메소드를 필요에 맞게 구현
 
-팩토리 메소드 패턴[^factory method pattern]
+**UserDao.java**
+
+```java
+public abstract class UserDao {
+    public User get(String email, String password) { ... }
+    public int insert(User user) { ... }
+    public abstract Connection getConnection() throws SQLException;
+}
+```
+
+**CUserDao.java**
+
+```java
+public class CUserDao extends UserDao {
+    	@Override
+	public Connection getConnection() throws SQLException { 
+        connection ...
+    }
+}
+```
+
+---
+
+#### 팩토리 메소드 패턴[^factory method pattern]
 
 > 서브클래스에서 구체적인 오브젝트 생성 방법을 결정
 
 ![팩토리 메소드 패턴](https://dhsim86.github.io/static/assets/img/blog/web/2017-06-06-toby_spring_01_object_dependency/01.png)
 
+**DBConnection.java**
 
+```java
+public interface DBConnection {
+	Connection getConnection() throws SQLException;
+}
+```
 
-예제코드 : 66p
+**MySQLConnection.java**
+
+```java
+public class MySQLConnection implements DBConnection {
+	@Override
+	public Connection getConnection() throws SQLException {
+		connection 구현
+}
+```
+
+**UserDao.java**
+
+```java
+public abstract DBConnection getDBConnection() throws SQLException;
+```
+
+**CUserDao.java**
+
+```java
+public class CUserDao extends UserDao {
+	@Override
+	public DBConnection getDBConnection() throws SQLException {
+		return new MySQLConnection();
+	}
+}
+```
 
 
 
@@ -113,28 +167,3 @@ public abstract Connection getConnection(); // 추상메소드
 3. 확장된 DB 커넥션 코드를 다른 DAO에 적용 불가능
 
    > `getConnection()` 메소드가 매 클래스마다 중복됨
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

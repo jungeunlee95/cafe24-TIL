@@ -1,0 +1,43 @@
+#!/bin/sh 
+# 
+# Startup script for Tomcat for HMO
+# 
+# chkconfig: 35 85 35 
+# description: Start Tomcat 
+# 
+# processname: tomcat 
+# 
+# Source function library. 
+
+. /etc/rc.d/init.d/functions 
+
+export JAVA_HOME=/usr/local/cafe24/jdk
+export CLASSPATH=.:$JAVA_HOME/lib/tools.jar
+export CATALINA_HOME=/usr/local/cafe24/tomcat
+export PATH=$PATH:$JAVA_HOME/bin
+
+case "$1" in 
+
+	start) 
+
+		echo -n "Starting tomcat: " 
+		daemon $CATALINA_HOME/bin/startup.sh 
+		touch /var/lock/subsys/tomcat
+		echo
+		;; 
+	stop) 
+		echo -n "Shutting down tomcat: " 
+		daemon $CATALINA_HOME/bin/shutdown.sh 
+		rm -f /var/lock/subsys/tomcat
+		echo 
+		;; 
+	restart) 
+		$0 stop
+		sleep 2 
+		$0 start 
+		;; 
+	*) 
+		echo "Usage: $0 {start|stop|restart}" 
+		exit 1 
+esac 
+exit 0

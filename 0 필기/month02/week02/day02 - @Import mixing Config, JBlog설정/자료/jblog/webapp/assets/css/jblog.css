@@ -1,0 +1,127 @@
+
+/* reset */
+*				{ margin:0; padding:0 }
+body			{ font:0.75em "맑은 고딕", 돋움, 굴림; text-align:center; color:#111 }
+ul, ol			{ list-style-type: none }
+fieldset		{ border:none }
+
+a:link 			{ color:#696969; text-decoration:none; font-weight:bold; }
+a:visited 		{ color:#696969F; text-decoration:none; font-weight:bold; }
+a:active 		{ color:#696969; text-decoration:none; font-weight:bold; }
+a:hover 		{ color:#dc143c; text-decoration:none; font-weight:bold; } 
+
+
+
+.center-content	{ width:500px; margin:120px auto 50px auto}
+
+.center-content .logo							{ width:163px; height:104px; background:url(/jblog/assets/images/logo.jpg) 0 0 no-repeat; margin:20px auto; text-indent:-100000px; font-size:0 }
+.center-content .menu							{ text-align:center; height:20px; margin:0 auto }
+.center-content .menu li						{ display:inline; padding-left:20px }
+.center-content .menu li:first-child			{ margin!-left:70px }
+.center-content .menu li a						{ font-size:1.2em }
+
+.center-content form,
+.center-content .welcome-message					{ clear:both; margin:15px auto 25px auto; }
+.center-content .search-form 						{ width:100%; }
+.center-content .search-form input[name='keyword']	{ width:350px; border:3px solid #3879D9; padding:5px }
+.center-content .search-form fieldset				{ margin:10px 0}
+.center-content .search-form input[name='which']	{ display:inline-block; margin-left:10px;}
+
+.login-form										{ width:250px; padding:10px; border:1px solid #bbb;	}
+.login-form input, .login-form label			{ display:block }
+.login-form label								{ text-align:left; color:#555; margin-bottom:2px; font-weight:bold; }
+.login-form input[type='text']					{ margin-bottom:10px; width:230px; padding:5px }
+
+.join-form										{ text-align:left; width:250px; padding:10px; border:1px solid #bbb; }
+.join-form label, .join-form fieldset legend	{ color:#555; margin-bottom:2px; font-weight:bold; }
+.join-form .block-label 						{ display:block }
+.join-form label, .join-form fieldset			{ margin:10px 0 5px 0 }
+
+.join-form input[type="submit"]					{ display:block; width:80px; margin:20px auto }
+
+.welcome-message								{ height: 200px }
+.welcome-message span							{ font-size:1.2em; font-wight:bold; color:#777 }
+.welcome-message span:before					{ content: url(/jblog/assets/images/bul1.gif);}
+.welcome-message span:after						{ content: url(/jblog/assets/images/bul2.gif);}		
+
+
+
+div#container				{ width:920px; margin:0 auto }
+div#header					{ height:120px; background: #5394CC;  }
+div#content					{ float:left; width:720px; min-height:220px }
+div#content.full-screen		{ float:none; width:920px;}
+div#navigation				{ float:right; width:200px }
+div#extra					{ float:right; clear:right; width:200px }
+div#footer					{ clear:both; width:100% }
+
+/* header */
+div#header h1		{ text-align:center; line-height:100px; margin:0; color:#fff }
+div#header ul		{ height:20px } 
+div#header li		{ float:right; margin-right:10px; }
+div#header li a 	{ color:#fff; font-weight:bold; text-decoration:none; }
+
+#header h1 a:hover	 { color:#79B30B; text-decoration:none  }
+#header h1 a:link	 { color:#79B30B; text-decoration:none  }
+#header h1 a:visited { color:#79B30B; text-decoration:none  }
+#header h1 a:active  { color:#79B30B; text-decoration:none  }
+
+div#container		{ text-align:left }
+
+
+/* content */
+div#content	.blog-content	{ padding:10px }
+.blog-content h4			{ font-size:1.3em; color:#9D96D0 }
+.blog-content p				{ margin-top:10px; line-height:150% }
+div#content .blog-list		{ margin:20px 0 10px 10px }
+.blog-list 					{ width:100% }
+.blog-list li				{ height:20px; clear:both; }
+.blog-list li a				{ display:block; float:left }
+.blog-list li span			{ display:block; float:right; margin-right:30px }
+
+/* admin content */
+div#content .admin-menu					{ height:20px; margin-top:15px; margin-bottom:10px }
+div#content .admin-menu li				{ float:left; margin-left:10px; }
+div#content .admin-menu li.selected		{ font-weight:bold }
+div#content .admin-menu li:first-child	{ margin-left:0 }
+div#content .admin-menu a				{ font-weight:bold }
+
+div#content .admin-config,
+div#content .admin-cat-add,
+div#content .admin-cat					{ border:none; width:720px; margin-top:30px }
+
+.admin-config td.t						{ padding:5px 0; width:75px }
+.admin-config td.s						{ padding:20px 0 10px 0; }
+.admin-config img						{ width:120px; border:1px solid #bbb }
+
+.admin-cat								{ border:1px solid #777; border-collapse:collapse }
+.admin-cat th, .admin-cat td			{ border:1px solid #777; padding:6px }
+
+.n-c									{ margin-top:30px }
+#admin-cat-add							{ margin-top:10px }
+#admin-cat-add td.t						{ padding:5px 0; width:74px }
+#admin-cat-add td.s						{ padding:10px 0 }
+
+.admin-cat-write td.t					{ padding:5px 0; width:40px }
+.admin-cat-write textarea				{ width:100%; height:200px }
+.admin-cat-write td.s					{ padding:10px 0; text-align:center }
+
+/* navigator */
+div#navigation							{ background-color:#F9F9F9 }
+div#navigation h2, div#navigation ul	{ margin-left:10px }
+div#navigation h2						{ font-size:1.0em }
+div#navigation ul						{ margin-top:5px; margin-bottom:10px }
+div#navigation ul li					{ padding:2px 0 }
+div#navigation ul a						{ font-weight:normal }
+
+
+/* extra */
+div#extra					{ background-color:#F9F9F9 }
+div#extra .blog-logo		{ margin:0 0 0 10px }
+div#extra .blog-logo img	{ width:150px }
+
+/* footer */
+div#footer		{ background:#F0F0F0; color:#666 }
+div#footer p	{ text-align:center; margin:0; padding:8px 10px }
+
+
+

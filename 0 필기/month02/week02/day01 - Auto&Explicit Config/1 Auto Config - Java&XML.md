@@ -158,18 +158,18 @@ public class JavaConfigTest01 {
 **JavaConfigTest01.java**
 
 ```java
-	public static void main(String[] args) {
-		testUser02();
-	}
+public static void main(String[] args) {
+    testUser02();
+}
 
-	public static void testUser02() {
-		ApplicationContext appCtx = 
-				new AnnotationConfigApplicationContext("config.user");
-		User user = appCtx.getBean(User.class);
-		System.out.println(user);
-		
-		((ConfigurableApplicationContext)appCtx).close();
-	}
+public static void testUser02() {
+    ApplicationContext appCtx = 
+        new AnnotationConfigApplicationContext("config.user");
+    User user = appCtx.getBean(User.class);
+    System.out.println(user);
+
+    ((ConfigurableApplicationContext)appCtx).close();
+}
 ```
 
 **UserConfig02.java**

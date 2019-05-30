@@ -48,7 +48,7 @@
 	|		|		|		|		|		|--- AppConfig
 	|		|		|		|		|		|--- WebConfig
 	|		|		|		|--- /config
-	|		|		|		|		|--- /app
+	|		|		|		|		|--- /app     [-> applicationContext.xml]
 	|		|		|		|		|		|--- DBConfig
 	|		|		|		|		|		|--- MyBatisConfig
 	|		|		|		|		|		|--- /mybatis
@@ -58,7 +58,7 @@
 	|		|		|		|		|		|		|		|--- board.xml
 	|		|		|		|		|		|--- /properties
 	|		|		|		|		|		|		|--- jdbc.properties
-	|		|		|		|		|--- /web
+	|		|		|		|		|--- /web     [->spring-servlet.xml]
 	|		|		|		|		|		|--- MVCConfig
 	|		|		|		|		|		|--- SecurityConfig
 	|		|		|		|		|		|--- MessageConfig

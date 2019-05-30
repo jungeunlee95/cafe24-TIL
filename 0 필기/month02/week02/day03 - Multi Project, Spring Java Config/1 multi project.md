@@ -6,21 +6,23 @@
 
 # multi project
 
-spring-study
+```
+mysite
+	|-- mysite1	 -- serlvet
+	|-- mysite2	 -- xml
+	|-- mysite3	 --javaconfig
+	|-- mysite4	 -- initializer
+jblog
+	|--- jblog2
+	|--- jblog3
+	|--- jblog4
+spring-boot
+	|--- spring-boot-springex
+	|--- spring-boot-mysite
+	|--- spring-boot-jblog
+```
 
-​	|-- spring-study-container
 
-​	|-- spring-study-springex2	 -xml
-
-​	|-- spring-study-springex3	 -javaconfig1
-
-​	|-- spring-study-springex4	 -javaconfig2
-
-
-
-mysite3
-
-mysite4
 
 ---
 

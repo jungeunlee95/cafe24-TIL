@@ -1,0 +1,107 @@
+1) 설치 
+yum -y install net-tools
+yum -y install bind-utils
+yum -y install ntsysv
+yum -y install wget
+yum -y install unzip
+yum -y install make cmake 
+yum -y install gcc g++ cpp gcc-c++ 
+yum -y install perl 
+yum -y install ncurses-devel 
+yum -y install bison 
+yum -y install zlib curl 
+yum -y install openssl openssl-devel 
+yum -y install bzip2-devel 
+yum -y install libtermcap-devel libc-client-devel
+yum -y install httpd-devel
+
+
+2) SELINUX 설정 disabled로 변경 
+/etc/selinux/config SELINUX=disabled 
+재부팅
+
+
+3) Apache 컴파일 설치
+
+CFLAGS=" -DHARD_SERVER_LIMIT=1024 -DDEFAULT_SERVER_LIMIT=1024 -DHARD_SERVER_LIMIT=1024 -DDEFAULT_SERVER_LIMIT=1024"; export CFLAGS 
+./configure --prefix=/usr/local/apache --with-mpm=worker --enable-so --disable-access --enable-access=shared --disable-auth --enable-auth=shared --disable-include --enable-include=shared --disable-log-config --enable-log-config=shared --disable-env --enable-env=shared --disable-setenvif --enable-setenvif=shared --disable-mime --enable-mime=shared --disable-status --enable-status=shared --disable-autoindex --enable-autoindex=shared -disable-asis --enable-asis=shared --disable-cgi --disable-cgid --enable-cgid=shared --disable-negotiation --enable-negotiation=shared --disable-dir --enable-dir=shared --disable-imap --enable-imap=shared --disable-actions --enable-actions=shared --disable-userdir --enable-userdir=shared --disable-alias --enable-alias=shared --enable-mods-shared=all 
+make 
+make install 
+  
+///// apache 설치후 실행 해볼것.. 실행 안될시 
+///// /usr/local/apache/lib 이동, ln -s /usr/local/lib/libiconv.so.2 libiconv.so.2 
+
+
+4) mod-jk 빌드
+
+   1. 다운로드
+
+      http://tomcat.apache.org/download-connectors.cgi 
+
+   2. 컴파일
+
+      [root@localhost native]# ./configure --with-apxs=/usr/local/a pache/bin/apxs
+      make
+      make install
+
+
+5) httpd.conf 설정
+
+   1.
+
+   LoadModule jk_module modules/mod_jk.so
+
+
+   2.
+
+   # mod_jk
+   <IfModule mod_jk.c>
+   JkWorkersFile conf/workers_jk.properties
+   JkShmFile run/mod_jk.shm
+   JkLogFile logs/mod_jk.log
+
+   JkLogLevel info
+   JkLogStampFormat "[%a %b %d %H:%M:%S %Y] "
+
+   JkMountFile conf/uriworkermap.properties
+   </IfModule>   
+
+6) workers_jk.properties
+   
+   worker.list=worker1, worker2
+
+   # server1
+   worker.worker1.port=8009
+   worker.worker1.host=localhost
+   worker.worker1.type=ajp13
+   worker.worker1.lbfactor=1
+
+   # server 2
+   worker.worker2.port=8009
+   worker.worker2.host=localhost
+   worker.worker2.type=ajp13
+   worker.worker2.lbfactor=1   
+
+7) uriworkermap.properties
+
+   ## Mapping the URI /service1 under worker1
+   /hellospring/*=worker1
+   #/mysite3/*=worker1
+
+   # /service2 요청으로 들어온 것은 worker2 로 mount
+   # /service2/*=worker2
+
+   # png와 jpg 는 apache 가 처리
+   # !/service2/*.png=worker2
+   # !/service2/*.jpg=worker2   
+
+8) tomcat의 server.xml
+
+    <!-- Define an AJP 1.3 Connector on port 8009 -->
+    <Connector port="8009" protocol="AJP/1.3" redirectPort="8443" URIEncoding="UTF-8"/>
+
+
+
+
+
+

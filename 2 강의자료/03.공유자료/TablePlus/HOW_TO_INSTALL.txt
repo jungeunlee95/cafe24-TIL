@@ -1,0 +1,5 @@
+1. Install .Net 4.7.2: https://www.microsoft.com/net/download/thank-you/net472
+- Microsoft has a bug that it won't allow you to install .Net 4.7.2 if you have installed any version of .Net 4.x.
+- In this case, you can install the SDK version instead of the runtime: https://www.microsoft.com/net/download/thank-you/net472-developer-pack
+2. Double click TablePlus.exe to run it.
+3. Enjoy!

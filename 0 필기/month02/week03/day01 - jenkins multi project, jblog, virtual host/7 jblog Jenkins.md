@@ -76,9 +76,13 @@
 
 
 
-jblog5 - spring boot  뭔진 모르지만 에러뜸
+jblog5 - spring boot  에러뜸
 
 https://stackoverflow.com/questions/27440985/unable-to-register-mbean-hikaridatasource-hikaripool-0-with-key-datasource
+
+
+
+## 해결법 1
 
 **application.properties**
 
@@ -88,7 +92,24 @@ spring.jmx.enabled=false
 
 
 
+## 해결법 2
 
+jblog5 - pom.xml
+
+```xml
+<!-- Mybatis Starter -->
+<dependency>
+    <groupId>org.mybatis.spring.boot</groupId>
+    <artifactId>mybatis-spring-boot-starter</artifactId>
+    <version>1.3.2</version>
+    <exclusions>
+        <exclusion>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </exclusion>
+    </exclusions>
+</dependency>
+```
 
 
 

@@ -1,0 +1,39 @@
+- python_ch3 장고 프로젝트 만들기 -
+
+1.PyCharm에서 python_ch3 프로젝트 만들기
+
+2.Django 설치
+  터미널에서
+  pip install django
+
+3.mysqlclient 설치
+  터미널에서
+  pip install mysqlclient
+
+4.장고 프로젝트 생성
+  터미널에서
+  django-admin startproject python_ch3
+
+5. 디렉토리 정리
+
+6. settings.py 설정
+  
+    1) TIME_ZONE = 'Asia/Seoul'
+    2) DATABASES = {
+    	'default': {
+ 	        'ENGINE': 'django.db.backends.mysql',
+        	'NAME': 'djdb',
+        	'USER': 'djdb',
+        	'PASSWORD': 'djdb',
+        	'HOST': '127.0.0.1',
+        	'PORT': 3306
+    		}
+	}
+
+7. 기본적으로 장고 프로젝트가 관리하는 테이블을 생성
+   터미널에서
+   python manage.py migrate
+
+
+
+ 

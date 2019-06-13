@@ -9,19 +9,27 @@ s = '/usr/local/bin/python'
 a = s.split('/')
 
 # 문제1. 파이썬 경로명 s = '/usr/local/bin/python' 에서 각각의 디렉토리 경로명을 분리하여 출력하세요.
-# 1
-# for i in range(1, len(a)) :
-#     if i!=len(a)-1:
-#         print(f'\'{a[i]}\'', end=', ')
-#     else:
-#         print(f'\'{a[i]}\'')
-# 2
+# --- 1
+for i in range(1, len(a)) :
+    if i!=len(a)-1:
+        print(f'\'{a[i]}\'', end=', ')
+    else:
+        print(f'\'{a[i]}\'')
+
+# --- 2
 for i in range(1, len(a)):
     print(f'\'{a[i]}\'', end='\n' if i==len(a)-1 else ', ')
 
-# 디렉토리 경로명과 파일명을 분리하여 출력하세요.
+# --- 3
+for i in range(1, len(a)) :
+    i!=len(a)-1 and print(f'\'{a[i]}\'', end=', ')
+    i==len(a)-1 and print(f'\'{a[i]}\'')
+
+
+# 문제2. 디렉토리 경로명과 파일명을 분리하여 출력하세요.
 dir_name = ''
 file_name = ''
+# --- 1
 for i in range(1, len(a)):
     if i==len(a)-1:
         file_name = a[i]
@@ -47,29 +55,30 @@ s = """
     </body>
 </html>"""
 
-# 1 : re 사용
-# import re
-# def remove_tag(content):
-#    cleanr =re.compile('<.*?>')
-#    cleantext = re.sub(cleanr, '', content)
-#    return cleantext
-# print(remove_tag(s))
-
-# 2 : 직접 거르기
-b = ''
-x = 0
+# --- 1 : 직접 거르기
+result = ''
+idx = 0
 while True:
-    if x==len(s):
-        break
-    if s[x] == '<':
-        while s[x] != '>':
-            b+=''
-            x+=1
+    if idx >= len(s): break
+    if s[idx] == '<':
+        while s[idx] != '>':
+            result += ''
+            idx += 1
     else:
-        b+=s[x]
-    x+=1
+        result += s[idx]
+    idx += 1
 
-print(b)
+print(result)
+
+print('------------------------------------------------------------------------------')
+
+# --- 2 : re 사용
+import re
+def remove_tag(content):
+   cleanr = re.compile('<.*?>')
+   cleantext = re.sub(cleanr, '', content)
+   return cleantext
+print(remove_tag(s))
 ```
 
 
@@ -88,18 +97,20 @@ s = """
 # 1)다음 문자열을 모든 소문자를 대문자로 변환하고, 문자 ',', '.','\n'를 없앤 후에 중복
 # 없이 각 단어를 순서대로 출력하세요.
 a = [',', '.', '\n', ' ']
+
 result = []
 str = ''
 for i in range(len(s)):
     if s[i] not in a:
         str += s[i].upper()
     else:
-        if str!='':
+        if str != '':
             result.append(str)
             str = ''
 print("\n".join([i for i in sorted(list(set(result)))] ))
 
 print("---------------[2]-----------------")
+
 # 2)각 단어의 빈도수도 함께 출력해 보세요
 def check_cnt(str):
     wordAll = s.split(' ')
@@ -122,28 +133,28 @@ for i in sorted(list(set(result))):
 # 반복문을 이용하여 369게임에서 박수를 쳐야 하는 경우의 수를 순서대로 화면에
 # 출력해보세요. 1부터 99까지만 실행하세요.
 
-# 1
-# a = ['3', '6', '9']
-# for i in range(1, 100):
-#     cnt = 0
-#     for j in str(i):
-#         if j in a :
-#             cnt += 1
-#     if cnt > 0:
-#         print(f'{i} {"짝"*cnt}')
-
-# 2
+# --- 1
 a = ['3', '6', '9']
-def check369(x):
+for i in range(1, 100):
     cnt = 0
     for j in str(i):
         if j in a :
             cnt += 1
-    if cnt > 0:
-        print(f'{i} {"짝"*cnt}')
+    if cnt > 0: print(f'{i} {"짝"*cnt}')
 
-for i in range(1,100):
-    check369(i)
+# --- 2
+def check369(num):
+    x = num // 10
+    y = num % 10
+    cnt = 0
+    if x == 3 or x == 6 or x == 9 :
+        cnt += 1
+    if y == 3 or y == 6 or y == 9 :
+        cnt += 1
+    if cnt != 0 : print(f'{num} {"짝"*cnt}')
+
+for num in range(1,100):
+    check369(num)
 ```
 
 
@@ -153,22 +164,22 @@ for i in range(1,100):
 ```python
 # 문제5.
 # 함수 sum 을 만드세요. 이 함수는 임의의 개수의 인수를 받아서 그 합을 계산합니다.
-# 1
+# --- 1
 def sum1(*args):
     result = 0
     for i in list(args):
         result += i
     return result
-print(sum1(1,2,3,4,5))
+print(sum1(1,2,3,4,5,10))
 
-# 2
-# def sum1(a):
-#     result = 0
-#     for i in list(a):
-#         result += int(i)
-#     return result
-# a = list(map(int, input("숫자를 여러개 입력하세요 : ").split()))
-# print(sum1(a))
+# --- 2
+def sum2(a):
+    result = 0
+    for i in list(a):
+        result += int(i)
+    return result
+a = list(map(int, input("숫자를 여러개 입력하세요 : ").split()))
+print(sum2(a))
 ```
 
 
@@ -210,13 +221,13 @@ while True:
     i = int(input(f'{cnt}>> '))
     cnt += 1
     if check(i)==1:
-        print("맞았습니다")
-        end = input("다시하시겠습니까(y/n)>>")
+        end = input("!!! 맞았습니다. \n다시하시겠습니까(y/n)>>")
         if end=='y':
             start()
             continue
-        elif end=='n':
-            sys.exit(1)
-        else:
-            end = input("잘못 입력 하셨습니다. 다시하시겠습니까(y/n)>>")
+        elif end == 'n':
+            break
+        else :
+            print("잘못 입력 하셨습니다.")
+            break
 ```

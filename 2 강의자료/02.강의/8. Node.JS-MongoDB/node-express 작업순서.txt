@@ -1,0 +1,68 @@
+1. node-practice
+2. node-connect-ex
+3. node-express-ex01
+4. node-express-ex02(WebStorm Wizard)
+5. node-express-emaillist
+6. node-express-guestbook
+7. node-express-mysite(WebStorm Wizard)
+
+=============================
+
+1. 프로젝트 생성 및 설정
+   (ECMAScript 버젼확인, Node.JS 라이브러리 Enabled)
+2. library 설치
+   npm install express
+   npm install ejs
+   npm install mongoose
+   npm install mongoose-auto-increment
+   npm install moment
+3. app.js 작성
+4. express 프로젝트 구조 숙지
+|--- app.js
+|--- package.json
+|--- public
+|	|--- images
+|	|--- css
+|	|--- js
+|
+|--- routes(C)
+|	|--- index.js
+|	|--- emaillist.js
+|
+|--- views(V)
+|	|--- form.ejs
+|	|--- list.ejs
+|
+|--- modes(M)
+|	|--- Email.js
+
+5. Router 작업
+    /
+    /emallist/form
+    /emallist/add
+    /emallist/list
+
+    /form
+    /add
+    /...
+
+6. view 작업(EJS Template 엔진)
+
+7. 폼 데이터 가져오기 (bodyParser)
+
+8. model 작업(Mongoos)
+
+9. insert 작업
+
+10. list 작업(ejs 뷰 렌더링)
+
+
+
+
+		
+
+	
+
+
+ 
+

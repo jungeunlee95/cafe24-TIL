@@ -1,0 +1,105 @@
+@CHARSET "UTF-8";
+@import "mysite.css";
+
+#guestbook			{ margin:20px auto;	width:540px; }
+#guestbook h1		{
+	color: #5C5C5C;
+	margin-bottom:10px;
+	background:url('/mysite3/assets/images/guestbook.png') 0 0 no-repeat;
+	background-size: 35px;
+	padding-left:40px;
+}
+#guestbook form { width:100% }
+#guestbook form input[type="text"],
+#guestbook form input[type="password"],
+#guestbook form textarea {
+	display: block;	
+	outline: none;
+	border: 1px solid #A9A9A9;
+	width: 530px;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+#guestbook form textarea	{
+	resize: none;
+	height: 80px;
+	font-family: "맑은 고딕", 돋움, 굴림;
+}
+#guestbook form input[type="submit"] {
+	display: block;
+	outline: none;	
+	border:1px solid #A9A9A9;
+	width: 542px;
+	background-color:#fff;
+	padding:5px 0;
+	font-weight:bold;
+	color: #846B5C;
+	cursor:pointer;
+}
+#guestbook form input[type="submit"]:hover {
+	background-color:#65B791;
+	color:#fff;
+}
+
+#guestbook ul		{
+	width:540px;
+	margin-top:20px;
+	border-top:1px solid #A9A9A9;
+}
+
+#guestbook ul li	{
+	width:100%; 
+	margin-top:20px;
+	background:url('/mysite3/assets/images/user.png') 0 20px no-repeat;
+	padding-left:50px;
+	position:relative;
+}
+
+#guestbook ul li strong,
+#guestbook ul li a {
+	display:block;	
+}
+
+#guestbook ul li strong {
+	color:#aaa;
+} 
+
+#guestbook ul li p {
+	width:465px;
+	padding:10px;
+	margin:5px 0;
+	border:1px solid #EAECEC;
+	background-color: #FAFAFA;
+	line-height:1.75em;
+	border-radius:4px;	
+}
+
+#guestbook ul li a {
+	position:absolute;
+	width:20px;
+	height:20px;
+	font-size:0;	
+	background:url('/mysite3/assets/images/delete.png') 0 0 no-repeat;
+	left:20px;
+	top:40px;
+	outline:none;
+}
+
+#guestbook.delete-form	{ height:200px }
+#guestbook.delete-form form {
+	width:300px;
+	padding:10px;
+	border:1px solid #666;
+	border-radius: 10px;
+	margin:50px auto;
+}
+
+#guestbook.delete-form a	{ display:block; margin:20px auto; width:110px }
+#guestbook.delete-form input[type="password"] {
+	margin-top:5px;
+	width:284px;
+}
+#guestbook.delete-form input[type="submit"] {
+	width:296px;
+}		
+#guestbook.delete-message p	{ padding:100px; height:50px; text-align:center }

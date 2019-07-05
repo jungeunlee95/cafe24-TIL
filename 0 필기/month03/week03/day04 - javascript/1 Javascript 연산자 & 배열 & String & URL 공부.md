@@ -29,6 +29,21 @@ console.log(o.hasProperty('email'));
 
 ### [2] 객체는 hasOwnProperty 속성을 기본으로 갖고있음
 
+Object안에 prototype이 가리키는 객체가 있는데 그 객체들이 함수들을 갖고있어서 쓸 수 있음
+
+```js
+var o = {
+    name : '마이콜',
+    age : 20,
+    hasProperty:function(property){
+        return property in this
+    },
+    __proto__ : {객체를 가리킴}
+}
+```
+
+자기안에서 찾아보고 없으면 proto가 가리키고 있는 객체에서 찾아서 씀
+
 > `in` 연산자와 같은 역할 
 
 ```js
